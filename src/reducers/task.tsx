@@ -51,7 +51,7 @@ function tasksReducer(tasks: Todo[], action: ActionType) {
   }
 }
 
-export type TaskDispatcher = {
+export interface TaskDispatcher {
   added: (title: string) => void
   deleted: (id: ID) => void
   changed: (task: Todo) => void
