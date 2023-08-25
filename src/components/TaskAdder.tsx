@@ -17,7 +17,14 @@ export const TaskAdder = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' name={inputName} ref={inputRef} className='new-todo' autoFocus placeholder='What needs to be done' />
+      <input
+        type='text'
+        name={inputName}
+        ref={inputRef}
+        className='border-b px-5 pb-1 selection:bg-emerald-100 selection:text-gray-800 focus:border-gray-300 outline-none text-xl  w-full text-gray-500'
+        autoFocus
+        placeholder='What needs to be done'
+      />
       <button></button>
     </form>
   )
