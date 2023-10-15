@@ -1,5 +1,6 @@
 import { useTasksDispatch } from '../contexts/task'
 import { type Todo as TodoType } from '../types'
+import { Trash } from '../assets/trash'
 
 export const Task: React.FC<TodoType> = ({ id, completed, title }) => {
   const controller = useTasksDispatch()
@@ -26,7 +27,7 @@ export const Task: React.FC<TodoType> = ({ id, completed, title }) => {
         type='checkbox'
         checked={completed}
         onChange={() => controller?.toggle(id)}
-      ></input>
+      />
       <svg
         className=' absolute w-6 h-6 pointer-events-none hidden peer-checked:block stroke-white p-1 outline-none'
         xmlns='http://www.w3.org/2000/svg'
@@ -39,9 +40,9 @@ export const Task: React.FC<TodoType> = ({ id, completed, title }) => {
       >
         <polyline points='20 6 9 17 4 12'></polyline>
       </svg>
-      <p className={`w-full overflow-hidden break-words ${stylesClass.p}`}>{title}</p>
+      <span className={`w-full overflow-hidden break-words ${stylesClass.p}`}>{title}</span>
       <button className='col-span-1 place-self-center text-red-500' onClick={() => controller?.deleted(id)}>
-        x
+        <Trash color='#ef4444' />
       </button>
     </li>
   )
