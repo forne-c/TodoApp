@@ -1,28 +1,32 @@
-// import useFilter from 'src/hooks/useFilter'
+import React from 'react'
+import {RenderStatesAsArray, RenderState } from '../const'
+import { SetFilter  } from '../contexts/filter'
 
-export default function RenderController() {
-  // const { filter, setFilter } = useFilter()
-  const filter = 'Active'
-  const setFilter = (algo: string) => undefined
+const RenderController = () => {
+  const setFilter = SetFilter()
+  const filter = RenderStatesAsArray[Math.round(Math.random() * 2)]
+
 
   const activeStyle = 'text-slate-100 bg-slate-500'
   const desactiveStyle = 'text-slate-500'
 
-  const f1 = () => setFilter('All')
-  const f2 = () => setFilter('Active')
-  const f3 = () => setFilter('Completed')
+  const f1 = () => setFilter(RenderState.all)
+  const f2 = () => setFilter(RenderState.complete)
+  const f3 = () => setFilter(RenderState.active)
 
   return (
     <div className='flex gap-1'>
-      <button onClick={f1} className={`rounded-full px-2 ${filter === 'All' ? activeStyle : desactiveStyle}`}>
+      <button onClick={f1} className={`rounded-full px-2 ${filter === RenderState.all ? activeStyle : desactiveStyle}`}>
         All
       </button>
-      <button onClick={f2} className={`rounded-full px-2 ${filter === 'Active' ? activeStyle : desactiveStyle}`}>
+      <button onClick={f2} className={`rounded-full px-2 ${filter === RenderState.active ? activeStyle : desactiveStyle}`}>
         Active
       </button>
-      <button onClick={f3} className={`rounded-full px-2 ${filter === 'Completed' ? activeStyle : desactiveStyle}`}>
+      <button onClick={f3} className={`rounded-full px-2 ${filter === RenderState.complete ? activeStyle : desactiveStyle}`}>
         Completed
       </button>
     </div>
   )
 }
+
+export default React.memo(RenderController)

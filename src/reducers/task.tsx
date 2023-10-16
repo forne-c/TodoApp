@@ -8,6 +8,7 @@ type ActionType =
   | { type: 'changed'; payload: { task: Todo } }
   | { type: 'deleted'; payload: { id: ID } }
   | { type: 'toggle'; payload: { id: ID } }
+
 function tasksReducer(tasks: Todo[], action: ActionType) {
   console.log(tasks)
   switch (action.type) {
